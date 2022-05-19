@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Alert, Row } from 'react-bootstrap';
+import {  Row } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import img1 from '../../../Images/bg3.jpg'
@@ -38,8 +38,7 @@ var bidamount;
    function bidSubmit(e){
     var pid=localStorage.getItem("pid");
     if(!bidamount){
-      {alert("please enter the amount")}
-
+      alert("please enter the amount")
     }
     else if((bidamount<1)|| (bidamount>3450000000)){
       alert("Invalid amount");
@@ -125,19 +124,20 @@ pauseOnHover
                 </div>
                
                 <div>
-                    <img height="300px" width="100%"src={img2} />
+                    <img height="300px" width="100%"src={img2} alt="no product"/>
                 </div>
             </Carousel>
             <input className="form-control mr-sm-2" type="search" placeholder="Search" onChange = {(event) => {
               setSearch(event.target.value)
             }}aria-label="Search"/>
             {productList.filter((val)=>{
-              if(search == ""){
+              if(search ===""){
                 return val;
               }
               else if(val.pname.toLowerCase().includes(search.toLowerCase())){
                 return val
               }
+              return false;
             }).map((value,key) =>{
               if(value.email===localStorage.getItem("email") || value.status === 'disabled')
               {}
@@ -151,7 +151,7 @@ pauseOnHover
                   <div className="div-img">
                   
 
-                     <Link to={`/View-product/${value._id}`} ><img  className="imagebo" src={url}/></Link>
+                     <Link to={`/View-product/${value._id}`} ><img  className="imagebo" src={url}alt="no product"/></Link>
 
                    </div>
                    <div className= "bid-details">
@@ -193,6 +193,7 @@ pauseOnHover
               )
                 
                 }
+                return false;
             })}
     </div>
     </div>

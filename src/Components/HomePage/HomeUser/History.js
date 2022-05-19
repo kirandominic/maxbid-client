@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import img1 from '../../../Images/bg3.jpg'
 import img2 from '../../../Images/bg5.jpg'
 import NavUser from '../../NavigationBar/NavigationUser/NavUser';
-import { Alert, Row } from 'react-bootstrap';
+import {  Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as axios from 'axios';
 import { Link } from "react-router-dom";
@@ -57,19 +57,20 @@ function History() {
         </div>
        
         <div>
-            <img src={img2} />
+            <img src={img2} alt="no product"/>
         </div>
     </Carousel>
     <input className="form-control mr-sm-2" type="search" placeholder="Search" onChange = {(event) => {
               setSearch(event.target.value)
             }}aria-label="Search"/>
     {productList.filter((val)=>{
-              if(search == ""){
+              if(search ===""){
                 return val;
               }
               else if(val.pname.toLowerCase().includes(search.toLowerCase())){
                 return val
               }
+              return false;
             }).map((value,key) =>{
            
               
@@ -81,7 +82,7 @@ function History() {
               return(
                 <div className = "product_list wer">
                   <div ClassName="wer">
-                  <img  className="imagebo" src={url}/>                   </div>
+                  <img  className="imagebo" src={url} alt="no product"/>                   </div>
                   <div className= "bid-details">
                   <h3>{value.pname}</h3>
                   <label>Information :{value.information}</label><br/>
@@ -92,12 +93,12 @@ function History() {
               )
 
             }
-            else if (value.status != 'disabled' && value.expired === 'no'){
+            else if (value.status !== 'disabled' && value.expired === 'no'){
               var pid = value._id;
             return(
               <div className = "product_list">
                   <div className="div-img">
-                <Link to={`/Details/${value._id}`} ><img  className="imagebo" src={url}/></Link>
+                <Link to={`/Details/${value._id}`} ><img  className="imagebo" src={url} alt="no product"/></Link>
                  </div>
                  <div className= "bid-details">
                 <h3>{value.pname}</h3>
@@ -115,7 +116,7 @@ function History() {
               return(
                 <div className = "product_list">
                   <div>
-                  <Link to={`/Details/${value._id}`} ><img ClassName='imagebox' width ="400px" height="400px"src={url}/></Link>
+                  <Link to={`/Details/${value._id}`} ><img ClassName='imagebox' width ="400px" height="400px"src={url} alt= "no product"/></Link>
                    </div>
                    <div>
                   <label>Product   :{value.pname}</label><br/>
@@ -130,7 +131,7 @@ function History() {
 
             }
         }
-                 
+            return false;     
                 }
             )}
     </div>

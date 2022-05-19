@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import NavUser from '../../NavigationBar/NavigationUser/NavUser';
 import GooglePayButton from '@google-pay/button-react';
 import "./promoteproduct.css"
@@ -12,7 +12,6 @@ function PromoteProduct() {
   
   const  {pid}  = useParams();
   const [viewproductobj, setView] = useState([]);
-  const [isDaysValid, setisDaysValid] = useState('valid');
   const [totalcost, setCost] = useState(0);
   const [days, setDays] = useState();
   const [billid2, setBillId] = useState('');
@@ -38,7 +37,7 @@ if(!token){
 
 
 
-  }, []);
+  }, [pid]);
   function checkBid(bid)
   {
     if(bid===0){
@@ -87,7 +86,7 @@ if(!token){
 
    axios.post("https://max-bid.herokuapp.com/addpayment",{pid:pid,uid:uid,amount:totalcost,days:days}).then((response) =>{
      console.log(response.data);
-  if(response.data.write_status=='success'){
+  if(response.data.write_status==='success'){
    // console.log(response.data);
     //console.log("payment added successfully");
     console.log(response.data.BillId);
@@ -186,7 +185,7 @@ if(!token){
             return(
               <div className = "card-container">
                 <div >
-                  <img  className="imagebo" src={url}/>
+                  <img  className="imagebo" src={url} alt="no product"/>
 
                  </div>
                  <div > 

@@ -16,7 +16,7 @@ function HomeGuest() {
   const [productList, setProductList] = useState([]);
 
   useEffect(()=>{ 
-   
+  
     
      
         axios.get("https://max-bid.herokuapp.com/get-products").then((response) => {
@@ -36,7 +36,7 @@ function HomeGuest() {
                     <img height="300px" width="100%" src={img1} alt="not AVAILABLE"/>
                 </div>
                 <div>
-                    <img height="300px" width="100%"src={img2} />
+                    <img alt="product not available"height="300px" width="100%"src={img2} />
                 </div>
                 
             </Carousel>
@@ -44,15 +44,16 @@ function HomeGuest() {
               setSearch(event.target.value)
             }}aria-label="Search"/>
             {productList.filter((val)=>{
-              if(search == ""){
+              if(search === ""){
                 return val;
               }
               else if(val.pname.toLowerCase().includes(search.toLowerCase())){
                 return val
               }
+              return false;
             }).map((value,key) =>{
             
-              if(value.expired==="no" && value.status != 'disabled')
+              if(value.expired==="no" && value.status === 'disabled')
               {
 
               var url = "https://max-bid.herokuapp.com/Images/Products/" + value.image;
@@ -61,7 +62,7 @@ function HomeGuest() {
 
                   <div className="div-img">
                   
-                  <img  className="imagebo" src={url}/>
+                  <img  className="imagebo" alt="no product"src={url}/>
 
                    </div>
                    <div className= "bid-details">
@@ -78,6 +79,9 @@ function HomeGuest() {
               )
                 
                 }
+
+                return false;
+
             })}
     </div>
     </div>

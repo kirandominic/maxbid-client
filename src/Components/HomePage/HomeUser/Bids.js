@@ -5,10 +5,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import img1 from '../../../Images/bg3.jpg'
 import img2 from '../../../Images/bg5.jpg'
 import NavUser from '../../NavigationBar/NavigationUser/NavUser';
-import { Alert, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as axios from 'axios';
-import { Link } from "react-router-dom";
 
 
 
@@ -59,7 +58,7 @@ function Bids() {
         </div>
        
         <div>
-            <img src={img2} />
+            <img src={img2} alt = "no product"/>
         </div>
     </Carousel>
     {  userBid.map((value,key) =>{

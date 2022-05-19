@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
 import { Table } from 'react-bootstrap';
-import Popup from 'reactjs-popup';
 import NavigationAdmin from '../../NavigationBar/Navadmin/NavAdmin'
 import {SidebarData} from '../Sidebar'
 function Payments() {
@@ -29,7 +28,7 @@ Axios.get("http://localhost:3001/getPayments").then((response)=>{
     return(
       <li key={key}
       className="row"  
-      id={window.location.pathname == val.link ? "active" :""}
+      id={window.location.pathname === val.link ? "active" :""}
       onClick={()=>{window.location.pathname = val.link}}>
          <div className='a'>{val.icon}</div><div className='b'> {val.title}</div>
           

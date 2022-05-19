@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Axios from 'axios';
 import { Table } from 'react-bootstrap';
-import { Alert, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import NavUser from "../../../NavigationBar/NavigationUser/NavUser";
 import Popup from 'reactjs-popup';
 
@@ -12,9 +12,9 @@ import Popup from 'reactjs-popup';
 import { useState,useEffect } from 'react'
 import * as axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import { Link } from "react-router-dom";
 import './viewproduct.css';
 function ViewProduct() {
+  const { pid } = useParams();
 
         const [listOfBids, setlistOfbids] =useState([])
         useEffect(()=>{ 
@@ -31,10 +31,9 @@ function ViewProduct() {
         
           
         
-        },[])
+        },[pid])
       let c=0;
     const [viewproductobj, setView] = useState([]);
-    const { pid } = useParams();
     function checkBid(bid)
     {
       if(bid===0){
@@ -87,7 +86,7 @@ function ViewProduct() {
       e.preventDefault();
       var pid=localStorage.getItem("pid");
       if(!bidamount){
-        {alert("please enter the bid amount")}
+        alert("please enter the bid amount")
 
       }
          else if((bidamount<1)|| (bidamount>3450000000)){
@@ -145,7 +144,7 @@ function ViewProduct() {
   
     
 
-      }, []);
+      }, [pid]);
     
   return (
      <div>
@@ -168,7 +167,7 @@ pauseOnHover
               return(
                 <div className = "product_list1">
                   <div>
-                     <img className="imagebox" width ="400px" height="400px"src={url}/>
+                     <img className="imagebox" width ="400px" height="400px"src={url} alt="no product"/>
 
                    </div>
                    <h3>{value.pname}</h3>

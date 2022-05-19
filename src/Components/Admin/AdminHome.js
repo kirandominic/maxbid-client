@@ -1,7 +1,6 @@
-import { light } from '@mui/material/styles/createPalette'
 import { useState,useEffect } from 'react'
 
-import React, { Component } from 'react'
+import React from 'react'
 import "./adminhome.css"
 import {SidebarData} from './Sidebar'
 import NavigationAdmin from '../NavigationBar/Navadmin/NavAdmin'
@@ -73,7 +72,7 @@ function AdminHome() {
     return(
       <li key={key}
       className="row"  
-      id={window.location.pathname == val.link ? "active" :""}
+      id={window.location.pathname === val.link ? "active" :""}
       onClick={()=>{window.location.pathname = val.link}}>
          <div className='a'>{val.icon}</div><div className='b'> {val.title}</div>
           

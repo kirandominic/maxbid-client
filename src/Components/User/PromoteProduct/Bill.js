@@ -2,7 +2,6 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useState,useEffect } from 'react'
 import * as axios from 'axios';
-import { Link } from "react-router-dom";
 
 function Bill() {
  
@@ -65,7 +64,7 @@ function Bill() {
     
     
     
-      }, []);
+      }, [bid]);
   return (
       
     <div className="bill"><br/><br/><br/><br/><br/><br/>

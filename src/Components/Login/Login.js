@@ -38,13 +38,13 @@ function Login() {
 
             setTimeout( function ( ) {  window.location.pathname = "/AdminHome"; }, 1000 );  ;
            }
-           else if(response.data.login_status=="success")
+           else if(response.data.login_status==="success")
            {
             
              localStorage.setItem('status', response.data.status);
              
 
-             if(localStorage.getItem('status')=='un_approved')
+             if(localStorage.getItem('status')==='un_approved')
              {
               window.location.pathname = "/Home-Guest";
              }
@@ -59,7 +59,7 @@ function Login() {
              }
 
            }
-           else if(response.data.login_status="fail")
+           else if(response.data.login_status==="fail")
            {
             //alert(response.data.login_status);
              alert("Username/Password is incorrect");

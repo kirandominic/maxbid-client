@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import AdminHome from '../AdminHome'
 import "./userlist.css";
 import Axios from 'axios';
 import { Table } from 'react-bootstrap';
@@ -19,42 +18,42 @@ Axios.get("http://localhost:3001/getUsers").then((response)=>{
 })
     },[])
  
-  function deleteuser(email)
-  {
-   if( window.confirm("do you want to delete"))
-   {
+  // function deleteuser(email)
+  // {
+  //  if( window.confirm("do you want to delete"))
+  //  {
 
-    Axios.post("http://localhost:3001/deleteUser",{email}).then((response)=>{
-      if(response.data.delete_status="sucess")
-      {
-        Axios.get("http://localhost:3001/getUsers").then((response)=>{
-        setlistOfUsers(response.data);
-        });
-      }
-      else if(response.data.delete_status="fail"){
-        alert("User Not Deleted");
-      }
+  //   Axios.post("http://localhost:3001/deleteUser",{email}).then((response)=>{
+  //     if(response.data.delete_status="sucess")
+  //     {
+  //       Axios.get("http://localhost:3001/getUsers").then((response)=>{
+  //       setlistOfUsers(response.data);
+  //       });
+  //     }
+  //     else if(response.data.delete_status="fail"){
+  //       alert("User Not Deleted");
+  //     }
 
-    },[]);
+  //   },[]);
 
-   }
-   else{
+  //  }
+  //  else{
 
-   }
-  }
+  //  }
+  // }
  
 function approveuser(email){
   if( window.confirm("Sure to approve this user"))
   {
 
    Axios.post("http://localhost:3001/approveUser",{email}).then((response)=>{
-     if(response.data.approve_status="sucess")
+     if(response.data.approve_status==="sucess")
      {
        Axios.get("http://localhost:3001/getUsers").then((response)=>{
        setlistOfUsers(response.data);
        });
      }
-     else if(response.data.approve_status="fail"){
+     else if(response.data.approve_status==="fail"){
        alert("Approval Unsucessfull");
      }
 
@@ -66,7 +65,7 @@ function approveuser(email){
   }
 }
 function checkApprove(status,url,email,profile){
-  if(status=="un_approved")
+  if(status==="un_approved")
   {
     return(
 <Popup trigger={<button type="button" className="btn btn-warning">Verify</button>} 
@@ -82,7 +81,7 @@ function checkApprove(status,url,email,profile){
       </Popup>
     )
   }
-  else if(status=="admin"){
+  else if(status==="admin"){
     return(
 <button value = {email} 
         type="button" className="btn btn-success"
@@ -109,7 +108,7 @@ function checkApprove(status,url,email,profile){
     return(
       <li key={key}
       className="row"  
-      id={window.location.pathname == val.link ? "active" :""}
+      id={window.location.pathname === val.link ? "active" :""}
       onClick={()=>{window.location.pathname = val.link}}>
          <div className='a'>{val.icon}</div><div className='b'> {val.title}</div>
           

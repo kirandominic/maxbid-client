@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import AdminHome from '../AdminHome'
 // import "./userlist.css";
 import Axios from 'axios';
 import { Table } from 'react-bootstrap';
-import Popup from 'reactjs-popup';
 import { Link } from "react-router-dom";
 import NavigationAdmin from '../../NavigationBar/Navadmin/NavAdmin'
 import {SidebarData} from '../Sidebar'
@@ -68,14 +66,14 @@ Axios.get("http://localhost:3001/getReports").then((response)=>{
 //   }
 // }
 function checkStatus(status,pid,reason){
-  if(status=="unchecked")
+  if(status==="unchecked")
   {
     return(
         <Link to={`/View-Reported-product/${pid}/${reason}`} ><button type="button" className="btn btn-danger">Unchecked</button></Link>
 
     )
   }
-  else if(status=="checked"){
+  else if(status==="checked"){
     return(
 <button type="button" className="btn btn-warning">Checked</button>   )
   }
@@ -95,7 +93,7 @@ function checkStatus(status,pid,reason){
     return(
       <li key={key}
       className="row"  
-      id={window.location.pathname == val.link ? "active" :""}
+      id={window.location.pathname === val.link ? "active" :""}
       onClick={()=>{window.location.pathname = val.link}}>
          <div className='a'>{val.icon}</div><div className='b'> {val.title}</div>
           

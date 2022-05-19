@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import img1 from '../../../Images/bg3.jpg'
 import img2 from '../../../Images/bg5.jpg'
 import NavUser from '../../NavigationBar/NavigationUser/NavUser';
-import { Alert, Row } from 'react-bootstrap';
+import {  Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as axios from 'axios';
 import { Link } from "react-router-dom";
@@ -32,7 +32,7 @@ function BidHistory() {
       
         
         
-        },[])
+        },[u_id])
     
   return (
     <div>
@@ -46,28 +46,29 @@ function BidHistory() {
         </div>
        
         <div>
-            <img src={img2} />
+            <img src={img2} alt="no product"/>
         </div>
     </Carousel>
     <input className="form-control mr-sm-2" type="search" placeholder="Search" onChange = {(event) => {
               setSearch(event.target.value)
             }}aria-label="Search"/>
     {allBidList.filter((val)=>{
-              if(search == ""){
+              if(search === ""){
                 return val;
               }
               else if(val.pname.toLowerCase().includes(search.toLowerCase())){
                 return val
               }
+              return false;
             }).map((value,key) =>{
             
                 var url = "https://max-bid.herokuapp.com/Images/Products/" + value.product[0].image;
-                if(value.product[0].winner===u_id && value.product[0].status !='disabled'){
+                if(value.product[0].winner===u_id && value.product[0].status !=='disabled'){
 
                     return(
                     <div className = "product_list">
                         <div className="div-img">
-                      <img  className="imagebo" src={url}/>
+                      <img  className="imagebo" src={url}alt="no product"/>
                        </div>
                        <div className= "bid-details">
                       <h3>{value.product[0].pname}</h3>
@@ -81,7 +82,7 @@ function BidHistory() {
                   )}
                   
                 
-                else if(value.product[0].expired==='no' && value.product[0].status !='disabled'){
+                else if(value.product[0].expired==='no' && value.product[0].status !=='disabled'){
                     console.log("inside if 1");
                    if(value.product[0].high_bid > value.bid){
                     console.log("inside if 2");
@@ -89,7 +90,7 @@ function BidHistory() {
                     return(
                     <div className = "product_list">
                         <div className="div-img">
-                      <Link to={`/View-product/${value.product[0]._id}`} ><img  className="imagebo" src={url}/></Link>
+                      <Link to={`/View-product/${value.product[0]._id}`} ><img  className="imagebo" src={url}alt="no product"/></Link>
                        </div>
                        <div className= "bid-details">
                       <h3>{value.product[0].pname}</h3>
@@ -108,7 +109,7 @@ function BidHistory() {
 return(
                     <div className = "product_list">
                     <div className="div-img">
-                  <Link to={`/Details/${value.product[0]._id}`} ><img  className="imagebo" src={url}/></Link>
+                  <Link to={`/Details/${value.product[0]._id}`} ><img  className="imagebo" src={url}alt="no product"/></Link>
                    </div>
                    <div className= "bid-details">
                   <h3>{value.product[0].pname}</h3>
@@ -127,7 +128,7 @@ return(
                     return(
                         <div className = "product_list">
                             <div className="div-img">
-                          <img  className="imagebo" src={url}/>
+                          <img  className="imagebo" src={url} alt="no product"/>
                            </div>
                            <div className= "bid-details">
                           <h3>{value.product[0].pname}</h3>
@@ -148,7 +149,7 @@ return(
                     return(
                         <div className = "product_list wer">
                           <div ClassName="wer">
-                          <img  className="imagebo" src={url}/>                   </div>
+                          <img  className="imagebo" src={url} alt="no product"/>                   </div>
                           <div className= "bid-details">
                           <h3>{value.product[0].pname}</h3>
                           <label>Information :{value.product[0].information}</label><br/>
@@ -158,6 +159,7 @@ return(
                         </div>
                       )
                 }
+                return false;
                 }
             )}
     </div>

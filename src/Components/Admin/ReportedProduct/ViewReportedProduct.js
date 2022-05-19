@@ -4,18 +4,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Axios from 'axios';
 import { Table } from 'react-bootstrap';
-import { Alert, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import NavAdmin from "../../NavigationBar/Navadmin/NavAdmin";
-import Popup from 'reactjs-popup';
 
 
 import { useState,useEffect } from 'react'
 import * as axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import { Link } from "react-router-dom";
 // import './viewproduct.css';
 function ViewReportedProduct() {
- 
+  const { pid } = useParams();
+  const { reason } = useParams();
     const [listOfBids, setlistOfbids] =useState([])
     useEffect(()=>{ 
 
@@ -31,11 +30,10 @@ function ViewReportedProduct() {
     
       
     
-    },[])
+    },[pid])
   let c=0;
 const [viewproductobj, setView] = useState([]);
-const { pid } = useParams();
-const { reason } = useParams();
+
 
 function checkBid(bid)
 {
@@ -51,13 +49,13 @@ function disableProduct(){
     if( window.confirm("Sure to disable this Product"))
   {
     Axios.post("http://localhost:3001/disableProduct",{pid:pid}).then((response)=>{
-        if(response.data.disable_status="success")
+        if(response.data.disable_status==="success")
         {
             toast("This Product Disabled successfully");
 
                 setTimeout( function ( ) {  window.location.reload();}, 1000 ); 
         }
-        else if(response.data.disable_status="fail"){
+        else if(response.data.disable_status==="fail"){
           alert("Approval Unsucessfull");
         }
    
@@ -80,7 +78,7 @@ if(!token){
 
 
 
-  }, []);
+  }, [pid]);
   function checkStatus(status)
   {
       if(status ==='approved')
@@ -115,7 +113,7 @@ pauseOnHover
           return(
             <div className = "product_list1">
               <div>
-                 <img className='imagebox' width ="400px" height="400px"src={url}/>
+                 <img className='imagebox' alt = "loading error"width ="400px" height="400px"src={url}/>
 
                </div>
                <div className = "box1">

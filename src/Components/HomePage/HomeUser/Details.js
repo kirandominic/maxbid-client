@@ -4,14 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Axios from 'axios';
 import { Table } from 'react-bootstrap';
-import { Alert, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 import NavUser from '../../NavigationBar/NavigationUser/NavUser';
 
 import { useState,useEffect } from 'react'
 import * as axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import { Link } from "react-router-dom";
 import '../../User/AddProduct/ViewProduct/viewproduct.css';
 function Details() {
      const [listOfUsers, setlistOfUsers] =useState([
@@ -75,30 +73,12 @@ function Details() {
 
       }
     }
-   const notifybid = () => toast("Bid Placed sucessfully");
  
- var bidamount;
-   function setBid(bid){
-     bidamount = bid;
-     console.log(bidamount);
-   }
-    function bidSubmit(e){
-     var pid=localStorage.getItem("pid");
-     axios.post("https://max-bid.herokuapp.com/get-bid",{pid:pid}).then((response) => {
-       if((response.data[0].bid)>(bidamount))
-       {alert("amount is less than basic bid")}
-       else{
-         var uid= localStorage.getItem("uid");
-         axios.post("https://max-bid.herokuapp.com/place-bid",{bid:bidamount,uid:uid,pid:pid}).then((response) => {
- if(response.data.bidstatus === "sucess")
- console.log("bid placed sucessfully")
- {notifybid()
- }        })
- 
-       }
-     })
-     
-    }
+  //  function setBid(bid){
+  //    bidamount = bid;
+  //    console.log(bidamount);
+  //  }
+  
     useEffect(() => {
         const token = localStorage.getItem('token')
     console.log(token);
@@ -106,7 +86,7 @@ function Details() {
       localStorage.removeItem('token');
       window.location.pathname = "/login";}
       else{ 
-        axios.post("https://max-bid.herokuapp.com/get-bids",{id:pid}).then((response)=>{
+         axios.post("https://max-bid.herokuapp.com/get-bids",{id:pid}).then((response)=>{
             setlistOfbids(response.data);
       });
         axios.post("https://max-bid.herokuapp.com/get-product",{id:pid}).then((response) => {
@@ -116,7 +96,7 @@ function Details() {
   
     
 
-      }, []);
+      }, [pid]);
     
   return (
     
@@ -129,7 +109,7 @@ function Details() {
               return(
                 <div className = "product_list1">
                   <div>
-                    <img className='imagebox' width ="400px" height="400px"src={url}/>
+                    <img className='imagebox' width ="400px" height="400px"src={url} alt= "no product"/>
 
                    </div>
                    <div className = "box1">

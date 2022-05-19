@@ -13,7 +13,7 @@ function NavUser() {
   var profileimg = localStorage.getItem('profile');
   var profileurl = "https://max-bid.herokuapp.com/Images/UserDocuments/" + profileimg;
   const [name, setName] =useState('');
-  const [categories, setCategories] =useState([]);
+  //const [categories] =useState([]);
 
   const options = [
     { value: 'electronics', label: 'electronics' },
@@ -34,7 +34,7 @@ useEffect(()=>{
   axios.post("https://max-bid.herokuapp.com/getUserName",{email:email1}).then((response) => {
     console.log(response.data.name);
     setName(response.data.name);
-    console.log(categories);
+   // console.log(categories);
 });
   
   },[])
@@ -72,15 +72,15 @@ useEffect(()=>{
       formData.append("email",localStorage.getItem("email"));
       axios.post('https://max-bid.herokuapp.com/addproduct',formData).then((response)=>{
        // console.log(response);
-       if(response.data.error_status=="no_photo")
+       if(response.data.error_status==="no_photo")
         {
           alert("Please upload the photo of the poduct")
         }
-        else if(response.data.error_status=="wrong_format")
+        else if(response.data.error_status==="wrong_format")
         {
           alert("Please upload an image")
         }
-        if(response.data.status=="ok")
+        if(response.data.status==="ok")
         {
           alert("Product added sucessfully.")
           window.location.pathname = "/history"

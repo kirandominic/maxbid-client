@@ -4,8 +4,6 @@ import "./profile.css";
 import Axios from 'axios';
 import { useState,useEffect } from 'react'
 import profile from "../../../Images/profile.png";
-import * as yup from 'yup';
-import {useFormik} from 'formik';
 import * as axios from 'axios';
 import Popup from 'reactjs-popup';
 import { ToastContainer, toast } from 'react-toastify';
@@ -32,7 +30,7 @@ function Profile() {
     const [newPassword2, setNewPassword2] = useState('');
     const email = localStorage.getItem('email');
 
-    useEffect(async()=>{ 
+    useEffect(()=>{ 
         const token = localStorage.getItem('token')
         console.log(token);
         if(!token){
@@ -40,23 +38,23 @@ function Profile() {
           window.location.pathname = "/login";
         }
           
-        Axios.post("https://max-bid.herokuapp.com/getadcount",{email:email}).then((response) => {
+         Axios.post("https://max-bid.herokuapp.com/getadcount",{email:email}).then((response) => {
           // setlistOfProducts(response.data);
           //console.log(response.data);
           setAdcount(response.data.adCount);
       });
-      Axios.post("https://max-bid.herokuapp.com/getactiveadcount",{email:email}).then((response) => {
+       Axios.post("https://max-bid.herokuapp.com/getactiveadcount",{email:email}).then((response) => {
           // setlistOfProducts(response.data);
           //console.log(response.data);
           setactiveAdCount(response.data.activeAdCount);
       });
 
-      Axios.post("https://max-bid.herokuapp.com/promocount",{email:email}).then((response) => {
+       Axios.post("https://max-bid.herokuapp.com/promocount",{email:email}).then((response) => {
         // setlistOfProducts(response.data);
         //console.log("promo"+response.data);
         setPromoCount(response.data.promoCount);
     });   
-    await Axios.post("https://max-bid.herokuapp.com/get-user",{uid:uid}).then((response) => {
+     Axios.post("https://max-bid.herokuapp.com/get-user",{uid:uid}).then((response) => {
          console.log("promo"+ response.data[0]);
 
         setUser(response.data[0]);
@@ -65,7 +63,7 @@ function Profile() {
         setPhone(response.data[0].phone);
         setAddress(response.data[0].address);
     }); 
-        },[])
+        },[email])
 
 
     
@@ -100,7 +98,7 @@ function Profile() {
             toast ("Confirm Password is required");
         }
         else{
-            if(newpassword1!=newPassword2){
+            if(newpassword1!==newPassword2){
                 toast ("Passwords Doesn't match");
             }
             else if(newpassword1===newPassword2){
