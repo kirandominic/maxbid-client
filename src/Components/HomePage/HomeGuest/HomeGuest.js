@@ -47,7 +47,7 @@ function HomeGuest() {
               if(search === ""){
                 return val;
               }
-              else if(val.pname.toLowerCase().includes(search.toLowerCase())){
+              else if(val.pname.includes(search)){
                 return val
               }
               return false;
