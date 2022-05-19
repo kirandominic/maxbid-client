@@ -1,0 +1,17 @@
+.wer{
+
+background-color: rgb(248, 61, 61);
+height: 590px;
+
+}
+.wer span{
+    color:red;
+    background-color:rgba(236, 223, 223, 0.31);
+}
+label{
+
+    color: rgb(255, 253, 253);
+    text-transform: uppercase;
+    font-weight: 100;
+
+}

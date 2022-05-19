@@ -1,0 +1,107 @@
+
+.paymentbox{
+    width : 1200px;
+    height: 1000px;
+    justify-content: center;
+    margin-left: 500px;
+}
+
+.payment{
+    width : 400px;
+    margin-left:30px;
+    float: left;
+}
+.days{
+    width:200px;
+    height:50px;
+    background-color:rgba(175, 220, 239, 0.745);
+    border :9px;
+    border-radius :10px;
+}
+/* .product_list3{
+    width: 450px;
+    height:auto;
+    float: left;
+    padding: 20px;
+    margin-left: 50px;
+    background-color: rgba(255, 228, 196, 0.308);
+    border: radius 15px;
+    border-radius: 20px;
+    align-items: center;
+
+} */
+.daysremaininglabel{
+    color:red;
+}
+
+
+.card-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    text-align: center;
+    font-family: sans-serif;
+    color:black;
+    border-radius: 25px;
+    background: linear-gradient(to right,  #2f81ed6e,#56cbf272);
+
+    float: left;
+    padding-top:30px;
+
+}
+
+
+
+.price {
+    color: rgb(24, 1, 1);
+    font-size: 30px
+}
+
+.card-container button {
+    border: none;
+    outline: 0;
+    padding: 14px;
+    color: white;
+    background-color: lightgrey;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+}
+
+.card-container button:hover {
+    opacity: .8;
+}
+.details {
+    font-size: 20px;
+text-align: left;
+margin-left: 30px;
+}
+.card-container .imagebo{
+width:70%;
+border-radius: 10px;
+box-shadow: 0 0 10px black;
+
+
+}
+.bill{
+    width:800px;
+    height:1000px;
+    background-color:white;
+
+}
+.bill th{
+    font-size:40px;
+}
+.card-container .googlebutton{
+    padding-bottom: 30px;
+}
+.printa:click{
+    visibility:hidden;
+
+}
+@media print {
+    .noprint {
+       visibility: hidden;
+    }
+ }

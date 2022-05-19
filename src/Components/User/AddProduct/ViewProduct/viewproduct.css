@@ -1,0 +1,84 @@
+.product_list1{
+    width: 950px;
+    min-height:800px;
+    float: left;
+    padding: 20px;
+    margin-left: 50px;
+    margin-top: 35px;
+    background: #56cbf272;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: sans-serif;
+    color:black;
+    border-radius: 10px;
+} 
+.imagebox{
+    height:500px;  
+    width:85%;
+    max-height:500px;
+border-radius: 10px;
+box-shadow: 0 0 7px black;
+margin-top:30px;
+transition: 1s; 
+}
+.imagebox:hover{
+    width: 90%;
+}
+.input-bid{
+    width:250px;
+    height:60px;
+    border-radius:5px;
+    border :none;
+    
+}
+.button-report{
+    margin-top:50px;
+    float:right;
+
+    
+}
+.bid-button{
+    margin-left: 20px;
+    box-shadow: 0 0 7px black;
+    height:60px;
+    width: 120px;
+
+}
+label{
+    font-size: 24px;
+}
+.m1{
+    margin-left: 50px;
+}
+.info{
+    float: right;
+}
+
+.box1{
+    width:400px;
+    height: 300px;
+    float: left;
+    text-align: left;
+
+}
+.box2{
+    width:400px;
+    float: left;
+
+}
+.bidlist{
+    width:800px;
+    height: 800px;
+    float: right;
+    
+        padding: 35px;
+  
+    margin-right: 40px;
+    margin-top: 35px;
+    background: #56cbf272;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: sans-serif;
+    color:black;
+    border-radius: 15px;
+}

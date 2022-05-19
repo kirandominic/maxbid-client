@@ -1,0 +1,85 @@
+.product_list{
+    width: 450px;
+    min-height:700px;
+    float: left;
+    padding: 20px;
+    margin-left: 40px;
+    margin-top: 35px;
+    background: #9cd5e772;
+
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: sans-serif;
+    color:black;
+    border-radius: 15px;
+
+    transition: background .7s ;
+    transition: box-shadow .3s ;
+
+}
+.product_list h3{
+    text-transform: uppercase;}
+.product_list:hover{
+    box-shadow: 0 14px 15px 0 rgba(243, 239, 239, 0.2);
+
+    background: #56cbf28f;
+}
+.product_list .imagebo{
+    width:85%;
+    max-height:350px;
+border-radius: 10px;
+box-shadow: 0 0 7px black;
+margin-top:30px;
+
+
+}
+
+.div-img{
+    height:400px;
+}
+.bid-details
+{
+   height:250px; 
+}
+.pop-bid-button{
+    width:80%;
+    height:60px;
+    background-color:rgba(0, 221, 255, 0.59);
+    margin-top:20px;
+    margin-left: 40px;
+}
+.popup-bid-button{
+    font-size: larger;
+    border: 1px solid rgb(194, 193, 193);
+    border-radius: 12px;
+    width: 150px;
+    height:60px;
+    text-align: center;
+    margin-left:10px;
+    
+}
+
+.imagebox{
+    max-width: 700px;
+    max-height:450px;   
+    object-fit: cover;
+}
+
+
+label{
+    font-size: 20px;
+}
+.m1{
+    margin-left: 50px;
+}
+.info{
+    float: right;
+}
+.form__input1{
+    color: black;
+    font-size:20px
+}
+.form__input2{
+    color: black;
+    font-size:20px
+}
