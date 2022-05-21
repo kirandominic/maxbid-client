@@ -6,9 +6,10 @@ import './Login.css';
 import NavigationLogin from '../NavigationBar/Navigation_Login/NavigationLogin';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const navigate = useNavigate();
 
 function Login() {
+  const navigate = useNavigate();
+
   // const notify = () => toast("Welcome to MAX-Bid");
   const formik = useFormik({
     initialValues:{
