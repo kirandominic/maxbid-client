@@ -6,6 +6,7 @@ import './Login.css';
 import NavigationLogin from '../NavigationBar/Navigation_Login/NavigationLogin';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const navigate = useNavigate();
 
 function Login() {
   // const notify = () => toast("Welcome to MAX-Bid");
@@ -46,8 +47,8 @@ function Login() {
 
              if(localStorage.getItem('status')==='un_approved')
              {
-              window.location.pathname = "/Home-Guest";
-             }
+              navigate("/Home-Guest")
+            }
              else if(response.data.user){
                 
                 localStorage.setItem('token', response.data.user);
@@ -55,7 +56,8 @@ function Login() {
                 localStorage.setItem('uid', response.data.id);
                 localStorage.setItem('profile', response.data.profile);
                 toast("Welcome "+response.data.fname+ " to MAX-Bid")
-                setTimeout( function ( ) {  window.location.pathname = "/Home"; }, 1000 );  ;
+                setTimeout( function ( ) {                navigate("/Home")
+              }, 1000 );  ;
              }
 
            }
