@@ -7,6 +7,7 @@ import { Table } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import NavUser from "../../../NavigationBar/NavigationUser/NavUser";
 import Popup from 'reactjs-popup';
+import {useNavigate} from "react-router-dom"
 
 
 import { useState,useEffect } from 'react'
@@ -15,6 +16,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import './viewproduct.css';
 function ViewProduct() {
   const { pid } = useParams();
+  const navigate = useNavigate();
 
         const [listOfBids, setlistOfbids] =useState([])
         useEffect(()=>{ 
@@ -23,7 +25,7 @@ function ViewProduct() {
           console.log(token);
           if(!token){
             localStorage.removeItem('token');
-            window.location.pathname = "/login";}
+            navigate("/login");   }
             else{ 
               Axios.post("https://max-bid.herokuapp.com/get-bids",{id:pid}).then((response)=>{
                 setlistOfbids(response.data);
@@ -135,7 +137,7 @@ function ViewProduct() {
     console.log(token);
     if(!token){
       localStorage.removeItem('token');
-      window.location.pathname = "/login";}
+      navigate("/login");}
       else{ 
         axios.post("https://max-bid.herokuapp.com/get-product",{id:pid}).then((response) => {
           setView(response.data);

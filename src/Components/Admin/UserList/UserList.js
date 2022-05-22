@@ -109,7 +109,7 @@ function checkApprove(status,url,email,profile){
       <li key={key}
       className="row"  
       id={window.location.pathname === val.link ? "active" :""}
-      onClick={()=>{window.location.pathname = val.link}}>
+      onClick={()=>{navigate(`/${val.link}`)}}>
          <div className='a'>{val.icon}</div><div className='b'> {val.title}</div>
           
           </li>

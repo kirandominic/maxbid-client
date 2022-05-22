@@ -7,6 +7,7 @@ import profile from "../../../Images/profile.png";
 import * as axios from 'axios';
 import Popup from 'reactjs-popup';
 import { ToastContainer, toast } from 'react-toastify';
+import {useNavigate} from "react-router-dom"
 
 const profileimg = localStorage.getItem('profile');
 const uid = localStorage.getItem('uid');
@@ -17,6 +18,8 @@ const uid = localStorage.getItem('uid');
 var profileurl = "https://max-bid.herokuapp.com/Images/UserDocuments/" + profileimg;
 
 function Profile() {
+    const navigate = useNavigate();
+
     const [promoCount, setPromoCount] = useState('');
     const [activeAdCount, setactiveAdCount] = useState('');
     const [adcount, setAdcount] = useState('');
@@ -35,7 +38,7 @@ function Profile() {
         console.log(token);
         if(!token){
           localStorage.removeItem('token');
-          window.location.pathname = "/login";
+          navigate("/login");
         }
           
          Axios.post("https://max-bid.herokuapp.com/getadcount",{email:email}).then((response) => {
@@ -83,7 +86,7 @@ function Profile() {
         }
         else{
             toast ("profile updated");
-            window.location.pathname = "/profile";
+            navigate("/profile");
         }
     });
 }

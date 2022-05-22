@@ -3,7 +3,10 @@ import Axios from 'axios';
 import { Table } from 'react-bootstrap';
 import NavigationAdmin from '../../NavigationBar/Navadmin/NavAdmin'
 import {SidebarData} from '../Sidebar'
+import {useNavigate} from "react-router-dom"
+
 function Payments() {
+  const navigate = useNavigate();
     const [listOfPayments, setPayments] =useState([
     
     ])
@@ -29,7 +32,7 @@ Axios.get("http://localhost:3001/getPayments").then((response)=>{
       <li key={key}
       className="row"  
       id={window.location.pathname === val.link ? "active" :""}
-      onClick={()=>{window.location.pathname = val.link}}>
+      onClick={()=>{navigate(`/${val.link}`)}}>
          <div className='a'>{val.icon}</div><div className='b'> {val.title}</div>
           
           </li>

@@ -7,6 +7,7 @@ import { Table } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import NavAdmin from "../../NavigationBar/Navadmin/NavAdmin";
 
+import {useNavigate} from "react-router-dom"
 
 import { useState,useEffect } from 'react'
 import * as axios from 'axios';
@@ -14,6 +15,8 @@ import { ToastContainer, toast } from 'react-toastify';
 // import './viewproduct.css';
 function ViewReportedProduct() {
   const { pid } = useParams();
+  const navigate = useNavigate();
+
   const { reason } = useParams();
     const [listOfBids, setlistOfbids] =useState([])
     useEffect(()=>{ 
@@ -22,7 +25,7 @@ function ViewReportedProduct() {
       console.log(token);
       if(!token){
         localStorage.removeItem('token');
-        window.location.pathname = "/login";}
+        navigate("/login");}
         else{ 
           Axios.post("http://localhost:3001/get-bids",{id:pid}).then((response)=>{
             setlistOfbids(response.data);
@@ -69,7 +72,7 @@ useEffect(() => {
 console.log(token);
 if(!token){
   localStorage.removeItem('token');
-  window.location.pathname = "/login";}
+  navigate("/login");}
   else{ 
     axios.post("http://localhost:3001/get-product",{id:pid}).then((response) => {
       setView(response.data);

@@ -66,7 +66,7 @@ function Register() {
         }
         else{
          alert ("User Created");
-         window.location.pathname = "/login";
+         <button type="button" className="btn btn-light sell" onClick={navigate("/Login")}>Home</button>
         }
        });
     }

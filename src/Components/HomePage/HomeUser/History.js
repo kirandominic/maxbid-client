@@ -24,7 +24,7 @@ function History() {
         console.log(token);
         if(!token){
           localStorage.removeItem('token');
-          window.location.pathname = "/login";}
+          navigate("/login");}
           else{ 
             axios.get("https://max-bid.herokuapp.com/get-products").then((response) => {
               setProductList(response.data);

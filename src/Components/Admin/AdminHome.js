@@ -6,8 +6,11 @@ import {SidebarData} from './Sidebar'
 import NavigationAdmin from '../NavigationBar/Navadmin/NavAdmin'
 import Axios from 'axios';
 import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom"
 
 function AdminHome() {
+  const navigate = useNavigate();
+
   const [userCount, setUserCount] = useState('');
   const [newUserCount, setNewUserCount] = useState('');
   const [adcount, setAdcount] = useState('');
@@ -24,7 +27,7 @@ function AdminHome() {
     console.log(token);
     if(!token){
       localStorage.removeItem('token');
-      window.location.pathname = "/login";}
+      navigate("/login");}
       Axios.get("http://localhost:3001/getnewusercount").then((response) => {
         // setlistOfProducts(response.data);
         //console.log(response.data);
@@ -73,7 +76,7 @@ function AdminHome() {
       <li key={key}
       className="row"  
       id={window.location.pathname === val.link ? "active" :""}
-      onClick={()=>{window.location.pathname = val.link}}>
+      onClick={()=>{navigate(`/${val.link}`)}}>
          <div className='a'>{val.icon}</div><div className='b'> {val.title}</div>
           
           </li>

@@ -4,9 +4,12 @@ import Axios from 'axios';
 import { Table } from 'react-bootstrap';
 import {SidebarData} from '../Sidebar'
 import NavigationAdmin from '../../NavigationBar/Navadmin/NavAdmin'
+import {useNavigate} from "react-router-dom"
 
 
 function UserList() {
+  const navigate = useNavigate();
+
     const [listOfProducts, setlistOfProducts] =useState([
     
     ])
@@ -32,7 +35,7 @@ function UserList() {
       <li key={key}
       className="row"  
       id={window.location.pathname === val.link ? "active" :""}
-      onClick={()=>{window.location.pathname = val.link}}>
+      onClick={()=>{navigate(`/${val.link}`)}}>
          <div className='a'>{val.icon}</div><div className='b'> {val.title}</div>
           
           </li>

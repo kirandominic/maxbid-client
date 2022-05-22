@@ -3,6 +3,8 @@ import'./NavUser.css'
 import Popup from 'reactjs-popup';
 import {useFormik} from 'formik';
 import { useState,useEffect } from 'react'
+import {useNavigate} from "react-router-dom"
+
 import * as yup from 'yup';
 import * as axios from 'axios';
 import Select from 'react-select';
@@ -10,6 +12,8 @@ import makeAnimated from 'react-select/animated';
 const animatedComponents = makeAnimated();
 
 function NavUser() {
+  const navigate = useNavigate();
+
   var profileimg = localStorage.getItem('profile');
   var profileurl = "https://max-bid.herokuapp.com/Images/UserDocuments/" + profileimg;
   const [name, setName] =useState('');
@@ -24,7 +28,7 @@ function NavUser() {
 {
   localStorage.removeItem('email');
   localStorage.removeItem('token');
-  window.location.pathname="/login";
+  navigate("/login")   
 } 
 useEffect(()=>{ 
    
@@ -83,8 +87,7 @@ useEffect(()=>{
         if(response.data.status==="ok")
         {
           alert("Product added sucessfully.")
-          window.location.pathname = "/history"
-        }
+          navigate("/history")        }
        });
     }
   })
@@ -166,14 +169,12 @@ alert(e.target.value)  }
         
       </Popup>        </li>
         <li className="nav-item">
-          <a className="nav-link Register" href="/history">Your Products</a>
+        <button type="button" className="btn btn-light sell" onClick={navigate("/Home")}>Home</button>         </li>
+        <li className="nav-item">
+        <button type="button" className="btn btn-light sell" onClick={navigate("/History")}>Your Bids</button>Your Bids
         </li>
         <li className="nav-item">
-          <a className="nav-link Register" href="/BidHistory">Your Bids</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link name" href="/profile"> <img className ="smallProfilePic" width="40px" alt="no" src={profileurl}/>{name.toUpperCase()}       
-</a>
+          <img className ="smallProfilePic" width="40px" alt="no" src={profileurl} onClick={navigate("/profile")}/>{name.toUpperCase()}
         </li>
         <li className="nav-item">
         <button type="button" className="btn btn-light sell" onClick={logout}>Logout</button>      </li>

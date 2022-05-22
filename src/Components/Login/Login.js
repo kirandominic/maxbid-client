@@ -38,7 +38,7 @@ function Login() {
             toast("Welcome "+response.data.fname+ " to MAX-Bid")
 
 
-            setTimeout( function ( ) {  window.location.pathname = "/AdminHome"; }, 1000 );  ;
+            setTimeout( function ( ) {   navigate("/AdminHome");    }, 1000 );  ;
            }
            else if(response.data.login_status==="success")
            {

@@ -21,7 +21,7 @@ function Details() {
       console.log(token);
       if(!token){
         localStorage.removeItem('token');
-        window.location.pathname = "/login";}
+        navigate("/login");}
         else{ 
           Axios.get("https://max-bid.herokuapp.com/getUsers").then((response)=>{
             setlistOfUsers(response.data);
@@ -84,7 +84,7 @@ function Details() {
     console.log(token);
     if(!token){
       localStorage.removeItem('token');
-      window.location.pathname = "/login";}
+      navigate("/login");}
       else{ 
          axios.post("https://max-bid.herokuapp.com/get-bids",{id:pid}).then((response)=>{
             setlistOfbids(response.data);

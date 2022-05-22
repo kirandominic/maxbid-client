@@ -33,7 +33,7 @@ function Bids() {
         console.log(token);
         if(!token){
           localStorage.removeItem('token');
-          window.location.pathname = "/login";}
+          navigate("/login");}
           else{ 
               console.log(uid);
             axios.post("https://max-bid.herokuapp.com/get-user-bids",{uid:uid}).then((response) => {
