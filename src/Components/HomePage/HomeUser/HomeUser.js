@@ -94,7 +94,8 @@ else{
       console.log(token);
       if(!token){
         localStorage.removeItem('token');
-        navigate("/login");}
+        //navigate("/login");
+      }
         else{ 
           axios.get("https://max-bid.herokuapp.com/get-products").then((response) => {
             setProductList(response.data);
