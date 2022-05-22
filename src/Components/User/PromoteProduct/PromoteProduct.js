@@ -4,17 +4,13 @@ import NavUser from '../../NavigationBar/NavigationUser/NavUser';
 import GooglePayButton from '@google-pay/button-react';
 import "./promoteproduct.css"
 import { useParams } from "react-router-dom";
-import {useNavigate} from "react-router-dom"
 
 import { useState,useEffect } from 'react'
 import * as axios from 'axios';
 
 function PromoteProduct() {
-
   
   const  {pid}  = useParams();
-  const navigate = useNavigate();
-
   const [viewproductobj, setView] = useState([]);
   const [totalcost, setCost] = useState(0);
   const [days, setDays] = useState();
@@ -25,13 +21,13 @@ var daysRemaining;
 console.log(token);
 if(!token){
   localStorage.removeItem('token');
-  navigate("/login");}
+  window.location.pathname = "/login";}
   else{ 
     axios.post("https://max-bid.herokuapp.com/get-product",{id:pid}).then((response) => {
       console.log(response.data[0]);
       if(response.data[0].promostatus==='active' ){
         alert("Product is already promoted");
-        navigate("/history");;
+        window.location.pathname = `/history`;
       }
       else{
       setView(response.data);
@@ -41,7 +37,7 @@ if(!token){
 
 
 
-  }, [pid,navigate]);
+  }, [pid]);
   function checkBid(bid)
   {
     if(bid===0){
@@ -102,7 +98,8 @@ if(!token){
 
     
            
-    navigate(`/bill/${billid1}`);
+     window.location.pathname = `/bill/${billid1}`;
+
 
   }
   else if(response.data.write_status==='fail'){

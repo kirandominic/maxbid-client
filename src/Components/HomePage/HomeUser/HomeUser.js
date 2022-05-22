@@ -12,12 +12,10 @@ import './HomeUser.css'
 import Popup from 'reactjs-popup';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from "react-router-dom";
-import {useNavigate} from "react-router-dom"
 
 
  function HomeUser() {
-  const navigate = useNavigate();
-
+   
   const [search, setSearch] = useState(['']);
    function checkBid(bid)
    {
@@ -94,8 +92,7 @@ else{
       console.log(token);
       if(!token){
         localStorage.removeItem('token');
-        //navigate("/login");
-      }
+        window.location.pathname = "/login";}
         else{ 
           axios.get("https://max-bid.herokuapp.com/get-products").then((response) => {
             setProductList(response.data);
@@ -103,7 +100,7 @@ else{
     
       
     
-    },[navigate])
+    },[])
 
   return (
     

@@ -7,7 +7,6 @@ import { Table } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import NavAdmin from "../../NavigationBar/Navadmin/NavAdmin";
 
-import {useNavigate} from "react-router-dom"
 
 import { useState,useEffect } from 'react'
 import * as axios from 'axios';
@@ -15,8 +14,6 @@ import { ToastContainer, toast } from 'react-toastify';
 // import './viewproduct.css';
 function ViewReportedProduct() {
   const { pid } = useParams();
-  const navigate = useNavigate();
-
   const { reason } = useParams();
     const [listOfBids, setlistOfbids] =useState([])
     useEffect(()=>{ 
@@ -25,7 +22,7 @@ function ViewReportedProduct() {
       console.log(token);
       if(!token){
         localStorage.removeItem('token');
-        navigate("/login");}
+        window.location.pathname = "/login";}
         else{ 
           Axios.post("http://localhost:3001/get-bids",{id:pid}).then((response)=>{
             setlistOfbids(response.data);
@@ -33,7 +30,7 @@ function ViewReportedProduct() {
     
       
     
-    },[pid,navigate])
+    },[pid])
   let c=0;
 const [viewproductobj, setView] = useState([]);
 
@@ -72,7 +69,7 @@ useEffect(() => {
 console.log(token);
 if(!token){
   localStorage.removeItem('token');
-  navigate("/login");}
+  window.location.pathname = "/login";}
   else{ 
     axios.post("http://localhost:3001/get-product",{id:pid}).then((response) => {
       setView(response.data);
@@ -81,7 +78,7 @@ if(!token){
 
 
 
-  }, [pid,navigate]);
+  }, [pid]);
   function checkStatus(status)
   {
       if(status ==='approved')

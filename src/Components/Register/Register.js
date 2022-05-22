@@ -6,12 +6,9 @@ import * as yup from 'yup';
 import React, { useState } from 'react'
 
 import NavRegister from '../NavigationBar/NavRegister/NavRegister';
-import {useNavigate} from "react-router-dom"
 
 
 function Register() {
-  const navigate = useNavigate();
-
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
     const [proileFile, setProfileFile] = useState();
@@ -69,7 +66,7 @@ function Register() {
         }
         else{
          alert ("User Created");
-         <button type="button" className="btn btn-light sell" onClick={navigate("/Login")}>Home</button>
+         window.location.pathname = "/login";
         }
        });
     }

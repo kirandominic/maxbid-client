@@ -8,13 +8,10 @@ import NavUser from '../../NavigationBar/NavigationUser/NavUser';
 import { Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as axios from 'axios';
-import {useNavigate} from "react-router-dom"
 
 
 
 function Bids() {
-    const navigate = useNavigate();
-
     const [userBid, setBid] = useState([]);
     // const [product, setProduct] = useState([]);
     var product;
@@ -36,7 +33,7 @@ function Bids() {
         console.log(token);
         if(!token){
           localStorage.removeItem('token');
-          navigate("/login");}
+          window.location.pathname = "/login";}
           else{ 
               console.log(uid);
             axios.post("https://max-bid.herokuapp.com/get-user-bids",{uid:uid}).then((response) => {
@@ -46,7 +43,9 @@ function Bids() {
         
         };
       
-        },[navigate]);
+        
+        
+        },[])
   return (
     <div>
             <div className='bghome'>  <Row>{<NavUser/>}</Row>

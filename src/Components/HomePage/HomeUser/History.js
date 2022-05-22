@@ -11,13 +11,10 @@ import * as axios from 'axios';
 import { Link } from "react-router-dom";
 import "./history.css";
 
-import {useNavigate} from "react-router-dom"
 
 
 
 function History() {
-  const navigate = useNavigate();
-
   const [search, setSearch] = useState(['']);
 
     const [productList, setProductList] = useState([]);
@@ -27,7 +24,7 @@ function History() {
         console.log(token);
         if(!token){
           localStorage.removeItem('token');
-          navigate("/login");}
+          window.location.pathname = "/login";}
           else{ 
             axios.get("https://max-bid.herokuapp.com/get-products").then((response) => {
               setProductList(response.data);
@@ -35,7 +32,7 @@ function History() {
       
         
         
-        },[navigate])
+        },[])
         function checkIfPromoted(promostatus,pid){
           if(promostatus ==='inactive'){
             return(

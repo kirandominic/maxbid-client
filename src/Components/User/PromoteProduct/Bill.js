@@ -2,11 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useState,useEffect } from 'react'
 import * as axios from 'axios';
-import {useNavigate} from "react-router-dom"
 
 function Bill() {
-  const navigate = useNavigate();
-
  
     const [viewbillobj,setBill] =useState([]);
 
@@ -53,7 +50,7 @@ function Bill() {
     console.log(token);
     if(!token){
       localStorage.removeItem('token');
-      navigate("/login");}
+      window.location.pathname = "/login";}
       else{ 
         
          axios.post("https://max-bid.herokuapp.com/get-bill",{bid:bid}).then((response) => {
@@ -67,7 +64,7 @@ function Bill() {
     
     
     
-      }, [bid,navigate]);
+      }, [bid]);
   return (
       
     <div className="bill"><br/><br/><br/><br/><br/><br/>
@@ -95,7 +92,7 @@ function Bill() {
         <div className = "noprint">
         <br/><br/> <button className="input-bid" onClick={()=>{window.print();}}>print</button> <br/><br/>
               
-        <button type="button" className="btn btn-light sell" onClick={navigate("/history")}>Home</button>
+              <button className="input-bid"><a href="/history" >goback</a></button>
     
               </div>
 

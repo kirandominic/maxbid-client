@@ -10,11 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as axios from 'axios';
 import { Link } from "react-router-dom";
 import "../../HomePage/HomeUser/history.css";
-import {useNavigate} from "react-router-dom"
-
 function BidHistory() {
-  const navigate = useNavigate();
-
   
     const [search, setSearch] = useState(['']);
 
@@ -27,16 +23,16 @@ function BidHistory() {
         console.log(token);
         if(!token){
           localStorage.removeItem('token');
-          navigate("/login");}
+          window.location.pathname = "/login";}
           else{ 
             axios.post("https://max-bid.herokuapp.com/get-bidded-products",{uid:u_id}).then((response) => {
                 console.log(response.data[0]);
                 setAllBidList(response.data);
           });};
       
-         
         
-        },[u_id,navigate])
+        
+        },[u_id])
     
   return (
     <div>

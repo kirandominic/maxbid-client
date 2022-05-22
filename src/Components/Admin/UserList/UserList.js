@@ -5,11 +5,8 @@ import { Table } from 'react-bootstrap';
 import Popup from 'reactjs-popup';
 import NavigationAdmin from '../../NavigationBar/Navadmin/NavAdmin'
 import {SidebarData} from '../Sidebar'
-import {useNavigate} from "react-router-dom"
 
 function UserList() {
-  const navigate = useNavigate();
-
     const [listOfUsers, setlistOfUsers] =useState([
     
     ])
@@ -19,7 +16,7 @@ function UserList() {
 Axios.get("http://localhost:3001/getUsers").then((response)=>{
   setlistOfUsers(response.data);
 })
-    },[navigate])
+    },[])
  
   // function deleteuser(email)
   // {
@@ -112,7 +109,7 @@ function checkApprove(status,url,email,profile){
       <li key={key}
       className="row"  
       id={window.location.pathname === val.link ? "active" :""}
-      onClick={()=>{navigate(`/${val.link}`)}}>
+      onClick={()=>{window.location.pathname = val.link}}>
          <div className='a'>{val.icon}</div><div className='b'> {val.title}</div>
           
           </li>
