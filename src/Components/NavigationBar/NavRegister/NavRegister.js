@@ -16,7 +16,7 @@ function NavRegister() {
         </li>
     
         <li class="nav-item">
-        <button type="button" className="btn btn-light sell" onClick={navigate("/Login")}>Home</button>
+        <button type="button" className="btn btn-light sell" onClick={navigate("/Login")}>Login</button>
         </li>
       </ul>
        
