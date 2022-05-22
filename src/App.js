@@ -21,7 +21,9 @@ import Bids from './Components/HomePage/HomeUser/Bids';
 import Bill from './Components/User/PromoteProduct/Bill';
 import Payments from './Components/Admin/Payments/Payments';
 import Profile from './Components/User/Profile/Profile';
+
 function App() {
+  
   return (
 
     <Router>

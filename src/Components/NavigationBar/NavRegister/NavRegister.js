@@ -12,11 +12,11 @@ function NavRegister() {
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-        <button type="button" className="btn btn-light sell" onClick={navigate("/Home-Guest")}>Home</button> <span class="sr-only"></span>
+        <button type="button" className="btn btn-light sell" onClick={()=>{navigate("/Home-Guest")}}>Home</button> <span class="sr-only"></span>
         </li>
     
         <li class="nav-item">
-        <button type="button" className="btn btn-light sell" onClick={navigate("/Login")}>Login</button>
+        <button type="button" className="btn btn-light sell" onClick={()=>{navigate("/Login")}}>Login</button>
         </li>
       </ul>
        
