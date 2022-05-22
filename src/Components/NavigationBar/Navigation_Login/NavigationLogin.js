@@ -17,7 +17,7 @@ function NavigationLogin() {
         </li>
     
         <li class="nav-item">
-        <button type="button" className="btn btn-light sell" onClick={navigate("/Register")}>Home</button>
+        <button type="button" className="btn btn-light sell" onClick={navigate("/Register")}>Register</button>
 
         </li>
       </ul>

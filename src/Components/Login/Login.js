@@ -57,8 +57,7 @@ function Login() {
                 localStorage.setItem('uid', response.data.id);
                 localStorage.setItem('profile', response.data.profile);
                 toast("Welcome "+response.data.fname+ " to MAX-Bid")
-                setTimeout( function ( ) {                navigate("/Home")
-              }, 1000 );  ;
+                setTimeout( function ( ) { navigate("/Home") }, 1000 );  ;
              }
 
            }
