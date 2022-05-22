@@ -41,7 +41,7 @@ if(!token){
 
 
 
-  }, [pid]);
+  }, [pid,navigate]);
   function checkBid(bid)
   {
     if(bid===0){

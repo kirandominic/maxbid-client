@@ -11,7 +11,11 @@ import NavUser from '../../NavigationBar/NavigationUser/NavUser';
 import { useState,useEffect } from 'react'
 import * as axios from 'axios';
 import '../../User/AddProduct/ViewProduct/viewproduct.css';
+import {useNavigate} from "react-router-dom"
+
 function Details() {
+  const navigate = useNavigate();
+
      const [listOfUsers, setlistOfUsers] =useState([
     
     ])
@@ -29,7 +33,7 @@ function Details() {
     
       
     
-    },[])
+    },[navigate]);
         const [listOfBids, setlistOfbids] =useState([])
      
       let c=0;
@@ -96,7 +100,7 @@ function Details() {
   
     
 
-      }, [pid]);
+      }, [pid,navigate]);
     
   return (
     

@@ -65,7 +65,7 @@ function AdminHome() {
   });
 
     
-    },[])
+    },[navigate])
   return (
     <div>
     <NavigationAdmin/>

@@ -66,7 +66,7 @@ function Profile() {
         setPhone(response.data[0].phone);
         setAddress(response.data[0].address);
     }); 
-        },[email])
+        },[email,navigate])
 
 
     

@@ -11,10 +11,13 @@ import * as axios from 'axios';
 import { Link } from "react-router-dom";
 import "./history.css";
 
+import {useNavigate} from "react-router-dom"
 
 
 
 function History() {
+  const navigate = useNavigate();
+
   const [search, setSearch] = useState(['']);
 
     const [productList, setProductList] = useState([]);
@@ -32,7 +35,7 @@ function History() {
       
         
         
-        },[])
+        },[navigate])
         function checkIfPromoted(promostatus,pid){
           if(promostatus ==='inactive'){
             return(

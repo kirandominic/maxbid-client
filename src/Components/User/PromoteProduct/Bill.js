@@ -67,7 +67,7 @@ function Bill() {
     
     
     
-      }, [bid]);
+      }, [bid,navigate]);
   return (
       
     <div className="bill"><br/><br/><br/><br/><br/><br/>

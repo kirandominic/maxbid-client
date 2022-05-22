@@ -34,9 +34,9 @@ function BidHistory() {
                 setAllBidList(response.data);
           });};
       
+         
         
-        
-        },[u_id])
+        },[u_id,navigate])
     
   return (
     <div>

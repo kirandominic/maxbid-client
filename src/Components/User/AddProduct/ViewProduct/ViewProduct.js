@@ -33,7 +33,7 @@ function ViewProduct() {
         
           
         
-        },[pid])
+        },[pid,navigate])
       let c=0;
     const [viewproductobj, setView] = useState([]);
     function checkBid(bid)
@@ -146,7 +146,7 @@ function ViewProduct() {
   
     
 
-      }, [pid]);
+      }, [pid,navigate]);
     
   return (
      <div>

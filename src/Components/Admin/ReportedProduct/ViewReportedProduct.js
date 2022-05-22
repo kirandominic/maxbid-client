@@ -33,7 +33,7 @@ function ViewReportedProduct() {
     
       
     
-    },[pid])
+    },[pid,navigate])
   let c=0;
 const [viewproductobj, setView] = useState([]);
 
@@ -81,7 +81,7 @@ if(!token){
 
 
 
-  }, [pid]);
+  }, [pid,navigate]);
   function checkStatus(status)
   {
       if(status ==='approved')

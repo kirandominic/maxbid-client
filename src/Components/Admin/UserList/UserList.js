@@ -5,8 +5,11 @@ import { Table } from 'react-bootstrap';
 import Popup from 'reactjs-popup';
 import NavigationAdmin from '../../NavigationBar/Navadmin/NavAdmin'
 import {SidebarData} from '../Sidebar'
+import {useNavigate} from "react-router-dom"
 
 function UserList() {
+  const navigate = useNavigate();
+
     const [listOfUsers, setlistOfUsers] =useState([
     
     ])
@@ -16,7 +19,7 @@ function UserList() {
 Axios.get("http://localhost:3001/getUsers").then((response)=>{
   setlistOfUsers(response.data);
 })
-    },[])
+    },[navigate])
  
   // function deleteuser(email)
   // {
