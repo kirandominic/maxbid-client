@@ -13,11 +13,11 @@ function NavigationLogin() {
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-        <button type="button" className="btn btn-light sell" onClick={navigate("/Home-Guest")}>Home</button>
+        <button type="button" className="btn btn-light sell" onClick={()=>{navigate("/Home-Guest")}}>Home</button>
         </li>
     
         <li class="nav-item">
-        <button type="button" className="btn btn-light sell" onClick={navigate("/Register")}>Register</button>
+        <button type="button" className="btn btn-light sell" onClick={()=>{navigate("/Register")}}>Register</button>
 
         </li>
       </ul>
