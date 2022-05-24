@@ -56,14 +56,14 @@ function BidHistory() {
               if(search === ""){
                 return val;
               }
-              else if(val.pname.toLowerCase().includes(search.toLowerCase())){
+              else if(val.product[0].pname.toString().toLowerCase().includes(search.toString().toLowerCase())){
                 return val
               }
-              return false;
-            }).map((value,key) =>{
+             return false;
+            }).map((value) =>{
             
                 var url = "https://max-bid.herokuapp.com/Images/Products/" + value.product[0].image;
-                if(value.product[0].winner===u_id && value.product[0].status !=='disabled'){
+                if((value.product[0].winner===u_id) && (value.product[0].status !=='disabled')){
 
                     return(
                     <div className = "product_list">

@@ -25,37 +25,37 @@ function AdminHome() {
     if(!token){
       localStorage.removeItem('token');
       window.location.pathname = "/login";}
-      Axios.get("http://localhost:3001/getnewusercount").then((response) => {
+      Axios.get("https://max-bid.herokuapp.com/getnewusercount").then((response) => {
         // setlistOfProducts(response.data);
         //console.log(response.data);
         setNewUserCount(response.data.newusercount);
     });
-      Axios.get("http://localhost:3001/getusercount").then((response) => {
+      Axios.get("https://max-bid.herokuapp.com/getusercount").then((response) => {
         // setlistOfProducts(response.data);
         //console.log(response.data);
         setUserCount(response.data.usercount);
     });
-    Axios.get("http://localhost:3001/getadcount").then((response) => {
+    Axios.get("https://max-bid.herokuapp.com/getadcount").then((response) => {
       // setlistOfProducts(response.data);
       //console.log(response.data);
       setAdcount(response.data.adCount);
   });
-  Axios.get("http://localhost:3001/getactiveadcount").then((response) => {
+  Axios.get("https://max-bid.herokuapp.com/getactiveadcount").then((response) => {
       // setlistOfProducts(response.data);
       //console.log(response.data);
       setactiveAdCount(response.data.activeAdCount);
   });
-  Axios.get("http://localhost:3001/reportcount").then((response) => {
+  Axios.get("https://max-bid.herokuapp.com/reportcount").then((response) => {
       // setlistOfProducts(response.data);
       console.log(response.data);
       setReportcount(response.data.reportcount);
   });
-  Axios.get("http://localhost:3001/promocount").then((response) => {
+  Axios.get("https://max-bid.herokuapp.com/promocount").then((response) => {
     // setlistOfProducts(response.data);
     console.log("promo"+response.data);
     setPromoCount(response.data.promoCount);
 });
-  Axios.get("http://localhost:3001/uncheckedreportcount").then((response) => {
+  Axios.get("https://max-bid.herokuapp.com/uncheckedreportcount").then((response) => {
       // setlistOfProducts(response.data);
       console.log(response.data);
       setuncheckedreportcount(response.data.uncheckedreportcount);

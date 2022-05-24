@@ -83,3 +83,12 @@ label{
     color: black;
     font-size:20px
 }
+.filterselect{
+    width:20%;
+    float:left;
+}
+.searchselect{
+    float:left;
+    width:80%;
+
+}

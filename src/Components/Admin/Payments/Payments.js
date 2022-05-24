@@ -10,7 +10,7 @@ function Payments() {
   let c=0;
   
     useEffect(()=>{
-Axios.get("http://localhost:3001/getPayments").then((response)=>{
+Axios.get("https://max-bid.herokuapp.com/getPayments").then((response)=>{
   setPayments(response.data);
 })
     },[])

@@ -12,11 +12,21 @@ import './HomeUser.css'
 import Popup from 'reactjs-popup';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from "react-router-dom";
+import Select from 'react-select';
 
 
  function HomeUser() {
    
   const [search, setSearch] = useState(['']);
+  const [category,setCategory] = useState(['']); 
+
+  const handleInputChange = (e) => {
+    console.log(e.value);
+
+setCategory(e.value);
+
+//console.log(category);
+  }
    function checkBid(bid)
    {
      if(bid===0){
@@ -85,7 +95,13 @@ else{
    }
 
   const [productList, setProductList] = useState([]);
+  const options = [
+    { value: '', label: 'none' },
 
+    { value: 'electronics', label: 'electronics' },
+    { value: 'antiques', label: 'antiques' },
+    { value: 'collectives', label: 'Collectives' }
+  ]
   useEffect(()=>{ 
     
       const token = localStorage.getItem('token')
@@ -127,14 +143,31 @@ pauseOnHover
                     <img height="300px" width="100%"src={img2} alt="no product"/>
                 </div>
             </Carousel>
+          <div className=" searchselect">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" onChange = {(event) => {
               setSearch(event.target.value)
             }}aria-label="Search"/>
+            </div>
+            <div className="filterselect">
+            <Select 
+      closeMenuOnSelect={true}
+      options={options}
+      onChange={(e)=>{handleInputChange(e)}}
+    />
+    </div>
             {productList.filter((val)=>{
               if(search ===""){
                 return val;
               }
-              else if(val.pname.toLowerCase().includes(search.toLowerCase())){
+              else if(val.pname.toString().toLowerCase().includes(search.toString().toLowerCase())){
+                return val
+              }
+              return false;
+            }).filter((val)=>{
+              if(category ===""){
+                return val;
+              }
+              else if(val.category.toString().toLowerCase().includes(category.toString().toLowerCase())){
                 return val
               }
               return false;

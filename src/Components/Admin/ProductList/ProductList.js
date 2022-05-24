@@ -13,7 +13,7 @@ function UserList() {
   let c=0;
   
     useEffect(()=>{
-        Axios.get("http://localhost:3001/get-products").then((response) => {
+        Axios.get("https://max-bid.herokuapp.com/get-products").then((response) => {
             setlistOfProducts(response.data);
         });
     },[])

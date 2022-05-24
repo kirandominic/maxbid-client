@@ -13,7 +13,7 @@ function UserList() {
   let c=0;
   
     useEffect(()=>{
-Axios.get("http://localhost:3001/getUsers").then((response)=>{
+Axios.get("https://max-bid.herokuapp.com/getUsers").then((response)=>{
   setlistOfUsers(response.data);
 })
     },[])
@@ -46,10 +46,10 @@ function approveuser(email){
   if( window.confirm("Sure to approve this user"))
   {
 
-   Axios.post("http://localhost:3001/approveUser",{email}).then((response)=>{
+   Axios.post("https://max-bid.herokuapp.com/approveUser",{email}).then((response)=>{
      if(response.data.approve_status==="sucess")
      {
-       Axios.get("http://localhost:3001/getUsers").then((response)=>{
+       Axios.get("https://max-bid.herokuapp.com/getUsers").then((response)=>{
        setlistOfUsers(response.data);
        });
      }
@@ -133,8 +133,8 @@ function checkApprove(status,url,email,profile){
   </thead>
   <tbody>
 {listOfUsers.map((user)=>{
-  var url = "http://localhost:3001/Images/UserDocuments/" + user.id
-  var profile = "http://localhost:3001/Images/UserDocuments/" + user.profile
+  var url = "https://max-bid.herokuapp.com/Images/UserDocuments/" + user.id
+  var profile = "https://max-bid.herokuapp.com/Images/UserDocuments/" + user.profile
 
   return(
     <tr>

@@ -24,7 +24,7 @@ function ViewReportedProduct() {
         localStorage.removeItem('token');
         window.location.pathname = "/login";}
         else{ 
-          Axios.post("http://localhost:3001/get-bids",{id:pid}).then((response)=>{
+          Axios.post("https://max-bid.herokuapp.com/get-bids",{id:pid}).then((response)=>{
             setlistOfbids(response.data);
         });};
     
@@ -48,7 +48,7 @@ function checkBid(bid)
 function disableProduct(){
     if( window.confirm("Sure to disable this Product"))
   {
-    Axios.post("http://localhost:3001/disableProduct",{pid:pid}).then((response)=>{
+    Axios.post("https://max-bid.herokuapp.com/disableProduct",{pid:pid}).then((response)=>{
         if(response.data.disable_status==="success")
         {
             toast("This Product Disabled successfully");
@@ -71,7 +71,7 @@ if(!token){
   localStorage.removeItem('token');
   window.location.pathname = "/login";}
   else{ 
-    axios.post("http://localhost:3001/get-product",{id:pid}).then((response) => {
+    axios.post("https://max-bid.herokuapp.com/get-product",{id:pid}).then((response) => {
       setView(response.data);
   });
 };
@@ -109,7 +109,7 @@ pauseOnHover
 <Row>{<NavAdmin/>}</Row>
     {viewproductobj.map((value,key) =>{
         
-          var url = "http://localhost:3001/Images/Products/" + value.image;
+          var url = "https://max-bid.herokuapp.com/Images/Products/" + value.image;
           return(
             <div className = "product_list1">
               <div>

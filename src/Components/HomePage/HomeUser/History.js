@@ -67,7 +67,7 @@ function History() {
               if(search ===""){
                 return val;
               }
-              else if(val.pname.toLowerCase().includes(search.toLowerCase())){
+              else if(val.pname.toString().toLowerCase().includes(search.toString().toLowerCase())){
                 return val
               }
               return false;
@@ -93,6 +93,26 @@ function History() {
               )
 
             }
+            else if(value.status !== 'disabled' && value.expired === 'yes'&& value.winner !== 'none'){
+              return(
+                <div className = "product_list">
+                  <div>
+                  <Link to={`/Details/${value._id}`} ><img ClassName='imagebox' width ="400px" height="400px"src={url} alt= "no product"/></Link>
+                   </div>
+                   <div>
+                  <label>Product   :{value.pname}</label><br/>
+                  <label>Basic Bid   :{value.bid}</label><br/>
+                  <label>Location    :{value.location}</label><br/>
+                  <label>Information :{value.information}</label><br/>
+                  <label>This item has expired click the image to view the details</label><br/>
+
+                  
+  
+                  </div>
+                </div>
+              )
+
+            }
             else if (value.status !== 'disabled' && value.expired === 'no'){
               var pid = value._id;
             return(
@@ -112,6 +132,7 @@ function History() {
               </div>
             )
             }
+            
             else{
               return(
                 <div className = "product_list">

@@ -13,9 +13,10 @@ function NavUser() {
   var profileimg = localStorage.getItem('profile');
   var profileurl = "https://max-bid.herokuapp.com/Images/UserDocuments/" + profileimg;
   const [name, setName] =useState('');
-  //const [categories] =useState([]);
-
+  
   const options = [
+    { value: '', label: 'none' },
+
     { value: 'electronics', label: 'electronics' },
     { value: 'antiques', label: 'antiques' },
     { value: 'collectives', label: 'Collectives' }
@@ -42,6 +43,7 @@ useEffect(()=>{
 
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
+  const [category,setCategory] = useState(''); 
   const formik = useFormik({
     initialValues:{
       pname:'',
@@ -60,7 +62,7 @@ useEffect(()=>{
     }),
     onSubmit:values=>{
       console.log("formik called");
-
+      console.log(category);
       const formData = new FormData();
       formData.append("file", file);
       formData.append("filename", fileName);
@@ -70,7 +72,8 @@ useEffect(()=>{
       formData.append("location",values.location);
       formData.append("information",values.information);
       formData.append("email",localStorage.getItem("email"));
-      axios.post('https://max-bid.herokuapp.com/addproduct',formData).then((response)=>{
+      formData.append("category",category);
+       axios.post('https://max-bid.herokuapp.com/addproduct',formData).then((response)=>{
        // console.log(response);
        if(response.data.error_status==="no_photo")
         {
@@ -89,7 +92,12 @@ useEffect(()=>{
     }
   })
   const handleInputChange = (e) => {
-alert(e.target.value)  }
+    console.log(e.value);
+
+setCategory(e.value);
+
+//console.log(category);
+  }
   
   
   
@@ -136,11 +144,10 @@ alert(e.target.value)  }
         </div>
         <div className="input1">
         <Select
-      closeMenuOnSelect={false}
+      closeMenuOnSelect={true}
       components={animatedComponents}
-      isMulti
       options={options}
-      onBlur={(e)=>{handleInputChange(e)}}
+      onChange={(e)=>{handleInputChange(e)}}
     />
         </div>
         <div className="input1">

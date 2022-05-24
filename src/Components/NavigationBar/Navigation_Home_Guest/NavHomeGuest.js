@@ -1,9 +1,9 @@
 import React from 'react'
 import'./NavHomeGuest.css'
-import {useNavigate} from "react-router-dom"
+//import {useNavigate} from "react-router-dom"
 
 function NavHomeGuest() {
-  const navigate = useNavigate();
+ // const navigate = useNavigate();
 
   return (
     <div className='navigation-guest'><nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,7 +17,7 @@ function NavHomeGuest() {
         </li>
 
         <li class="nav-item">
-        <button onClick={()=>navigate("/login")}>About</button>
+        <a class="nav-link Register" href="/login">Login</a>
 
         </li>
         <li class="nav-item">

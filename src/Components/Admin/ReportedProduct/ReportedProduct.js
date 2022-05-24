@@ -14,7 +14,7 @@ function ReportedProduct() {
   let c=0;
   
     useEffect(()=>{
-Axios.get("http://localhost:3001/getReports").then((response)=>{
+Axios.get("https://max-bid.herokuapp.com/getReports").then((response)=>{
   setlistOfReports(response.data);
 })
     },[])

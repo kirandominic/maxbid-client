@@ -82,6 +82,7 @@ if(!token){
    }
  }
  function UpdateProductPromotion(){
+   console.log("after payment")
    var uid = localStorage.getItem('uid');
 
    axios.post("https://max-bid.herokuapp.com/addpayment",{pid:pid,uid:uid,amount:totalcost,days:days}).then((response) =>{
