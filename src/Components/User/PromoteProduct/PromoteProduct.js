@@ -11,6 +11,8 @@ import * as axios from 'axios';
 function PromoteProduct() {
   
   const  {pid}  = useParams();
+  const [currentRate, setCurrentRate] =useState(0);
+
   const [viewproductobj, setView] = useState([]);
   const [totalcost, setCost] = useState(0);
   const [days, setDays] = useState();
@@ -33,6 +35,15 @@ if(!token){
       setView(response.data);
       }
   });
+  axios.get("http://localhost:3001/getRate").then((response)=>{
+  console.log(response.data);
+  if(response.data.message==='fail'){
+    console.log("retrieving dates error");
+  }
+  else{
+    setCurrentRate(response.data.rate);
+  }
+});
 };
 
 
@@ -76,7 +87,7 @@ if(!token){
      }
      else{
       console.log("inside else");
-       var cost = inputdays * 12;
+       var cost = inputdays * currentRate;
        setCost(cost);
      }
    }
@@ -209,7 +220,7 @@ if(!token){
               
           })}
 <div className="payment card-container">
-      <p for="rate" >Rate per day: 12 rupees</p>
+      <p for="rate" >Rate per day: {currentRate} rupees</p>
       <p for="rate" >     Remaining Days {daysRemaining}</p>
 
       <input type="number"  placeholder="Number of Days" value = {Number(days)}className="days" min ="1"onChange={(event) => {
