@@ -21,6 +21,7 @@ import Bids from './Components/HomePage/HomeUser/Bids';
 import Bill from './Components/User/PromoteProduct/Bill';
 import Payments from './Components/Admin/Payments/Payments';
 import Profile from './Components/User/Profile/Profile';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 
 function App() {
   
@@ -42,6 +43,8 @@ function App() {
 
 
         <Route path = "/Login" element={<Login/>}/>
+        <Route path = "/forgotPassword" element={<ForgotPassword/>}/>
+
         <Route path = "/AdminHome" element={<AdminHome/>}/>
         <Route path = "/Home-Guest" element={<HomeGuest/>}/>
         <Route path = "/" element={<HomeGuest/>}/>

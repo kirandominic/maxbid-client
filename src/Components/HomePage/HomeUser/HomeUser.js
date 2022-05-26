@@ -97,7 +97,6 @@ else{
   const [productList, setProductList] = useState([]);
   const options = [
     { value: '', label: 'none' },
-
     { value: 'electronics', label: 'electronics' },
     { value: 'antiques', label: 'antiques' },
     { value: 'collectives', label: 'Collectives' }
@@ -210,21 +209,12 @@ pauseOnHover
 
                     bidSubmit();
                   }}>Place bid</button>
- 
-        
-        
-
        </div>
-         
        </Popup> 
-
         </div>
         </form>
-
                   </div>
-               
               )
-                
                 }
                 return false;
             })}
