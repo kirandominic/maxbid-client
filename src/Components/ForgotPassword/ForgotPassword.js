@@ -25,7 +25,7 @@ function ForgotPassword() {
 otp:yup.number('Enter Numeric Values'),
     }),
     onSubmit:values=>{
-      axios.post('http://localhost:3001/changepassword',{
+      axios.post('https://max-bid.herokuapp.com/changepassword',{
 
           email:email,
           password:values.password,
@@ -87,7 +87,7 @@ otp:yup.number('Enter Numeric Values'),
       else
       {
       try {
-          axios.post('http://localhost:3001/forgotcheck',{email:email}).then((res=>{
+          axios.post('https://max-bid.herokuapp.com/forgotcheck',{email:email}).then((res=>{
               console.log(res);
               if(res.data.message==='Email not Registered'){
                   toast.error('Email not Registered');
