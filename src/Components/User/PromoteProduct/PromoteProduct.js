@@ -35,7 +35,7 @@ if(!token){
       setView(response.data);
       }
   });
-  axios.get("http://localhost:3001/getRate").then((response)=>{
+  axios.get("https://max-bid.herokuapp.com/getRate").then((response)=>{
   console.log(response.data);
   if(response.data.message==='fail'){
     console.log("retrieving dates error");

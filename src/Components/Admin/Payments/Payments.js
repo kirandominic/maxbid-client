@@ -13,11 +13,11 @@ function Payments() {
   let c=0;
   
     useEffect(()=>{
-Axios.get("http://localhost:3001/getPayments").then((response)=>{
+Axios.get("https://max-bid.herokuapp.com/getPayments").then((response)=>{
 
   setPayments(response.data);
 })
-Axios.get("http://localhost:3001/getRate").then((response)=>{
+Axios.get("https://max-bid.herokuapp.com/getRate").then((response)=>{
   console.log(response.data);
   if(response.data.message==='fail'){
     console.log("retrieving dates error");
@@ -37,14 +37,14 @@ Axios.get("http://localhost:3001/getRate").then((response)=>{
    }
    else{
      console.log(newRate);
-   await Axios.post("http://localhost:3001/updateRate",{rate:newRate}).then((res,err)=>{
+   await Axios.post("https://max-bid.herokuapp.com/updateRate",{rate:newRate}).then((res,err)=>{
       if(err){
         console.log(err);
 
       }
       else{
         if(res.data.message === 'sucess'){
-          Axios.get("http://localhost:3001/getRate").then((response)=>{
+          Axios.get("https://max-bid.herokuapp.com/getRate").then((response)=>{
   console.log(response.data);
   if(response.data.message==='fail'){
     console.log("retrieving dates error");
